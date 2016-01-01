@@ -17,4 +17,7 @@
     <string name="favourite">Favourite</string>
     <string name="section_title">Section One</string>
     <string name="downloaded">Downloaded</string>
+    <string name="feedback">Send feedback</string>
+    <string name="help">Help</string>
+    <string name="help_feedback"><![CDATA[Help & feedback]]></string>
 </resources>

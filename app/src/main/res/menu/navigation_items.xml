@@ -1,0 +1,35 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Main3Activity">
+
+    <group
+        android:id="@+id/root_menu_drawer"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/drawer_home"
+            android:checked="true"
+            android:icon="@mipmap/ic_home_black_24dp"
+            android:title="@string/home" />
+
+        <item
+            android:id="@+id/drawer_favourite"
+            android:icon="@mipmap/ic_favorite_black_24dp"
+            android:title="@string/favourite" />
+    </group>
+
+    <group
+        android:id="@+id/last_section_menu_drawer"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/drawer_settings"
+            android:icon="@mipmap/ic_settings_black_24dp"
+            android:title="@string/settings" />
+
+        <item
+            android:id="@+id/drawer_help_feedback"
+            android:icon="@mipmap/ic_help_black_24dp"
+            android:title="@string/help_feedback" />
+    </group>
+</menu>
