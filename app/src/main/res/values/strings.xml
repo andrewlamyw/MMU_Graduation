@@ -12,4 +12,9 @@
     <string name="add">add</string>
     <string name="share">Share</string>
     <string name="action_categorise">View courses in group</string>
+    <string name="course_name">Course Name</string>
+    <string name="home">Home</string>
+    <string name="favourite">Favourite</string>
+    <string name="section_title">Section One</string>
+    <string name="downloaded">Downloaded</string>
 </resources>

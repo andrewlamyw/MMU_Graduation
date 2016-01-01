@@ -1,5 +1,6 @@
 package com.lamyatweng.mmugraduation1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -42,7 +43,8 @@ public class CourseFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add_progr:
-
+                Intent intent = new Intent(getActivity(), CourseAddActivity.class);
+                getActivity().startActivity(intent);
                 return true;
 
             case R.id.action_categorise:

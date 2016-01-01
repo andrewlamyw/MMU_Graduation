@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-        // Set app bar
+        // Set action bar
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
@@ -58,13 +58,15 @@ public class MainActivity extends AppCompatActivity {
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                getSupportActionBar().setTitle(mTitle);
+                if (getSupportActionBar() != null)
+                    getSupportActionBar().setTitle(mTitle);
             }
 
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle(mTitle);
+                if (getSupportActionBar() != null)
+                    getSupportActionBar().setTitle(mTitle);
             }
         };
 
@@ -103,14 +105,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /* The click listener for ListView in the navigation drawer */
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView parent, View view, int position, long id) {
-            selectItem(parent.getItemAtPosition(position).toString(), position);
-        }
-    }
-
     /**
      * Swaps fragments in the main content view
      */
@@ -122,9 +116,10 @@ public class MainActivity extends AppCompatActivity {
 //                            args.putString(ProfileFragment.ARG_PROFILE, function);
 //                            break;
 
-            case "Course":  fragment = new CourseFragment();
+            case "Course":
+                fragment = new CourseFragment();
 //                            args.putString(CourseFragment.ARG_COURSE, function);
-                            break;
+                break;
 
 //            case "Graduation":  fragment = new GraduationFragment();
 //                                args.putString(GraduationFragment.ARG_GRADUATION, function);
@@ -145,6 +140,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
-        getSupportActionBar().setTitle(mTitle);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setTitle(mTitle);
+    }
+
+    /* The click listener for ListView in the navigation drawer */
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            selectItem(parent.getItemAtPosition(position).toString(), position);
+        }
     }
 }
