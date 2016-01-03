@@ -5,6 +5,16 @@
         <item>Course</item>
         <item>Graduation</item>
     </string-array>
+    <string-array name="campus_locations_array">
+        <item>Cyberjaya</item>
+        <item>Melaka</item>
+    </string-array>
+    <string-array name="course_types_array">
+        <item>Diploma</item>
+        <item>Degree</item>
+        <item>Masters</item>
+        <item>Ph.D.</item>
+    </string-array>
     <string name="drawer_open">Drawer open</string>
     <string name="drawer_close">Drawer close</string>
     <string name="search">Search</string>
@@ -20,4 +30,5 @@
     <string name="feedback">Send feedback</string>
     <string name="help">Help</string>
     <string name="help_feedback"><![CDATA[Help & feedback]]></string>
+    <string name="course">Course</string>
 </resources>

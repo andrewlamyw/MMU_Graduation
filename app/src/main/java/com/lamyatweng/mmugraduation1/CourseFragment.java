@@ -3,6 +3,7 @@ package com.lamyatweng.mmugraduation1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,7 +16,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
-import com.lamyatweng.mmugraduation1.model.Programme;
+import com.lamyatweng.mmugraduation1.model.Course;
 
 public class CourseFragment extends Fragment {
     Firebase mCourseRef;
@@ -30,6 +31,14 @@ public class CourseFragment extends Fragment {
         Firebase.setAndroidContext(getContext());
         mCourseRef = new Firebase("https://mmugraduation.firebaseio.com/courses");
         this.setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        android.support.v7.app.ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null)
+            actionBar.setTitle(getResources().getString(R.string.course));
     }
 
     @Override
@@ -72,10 +81,10 @@ public class CourseFragment extends Fragment {
         mCourseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Programme progr;
+                Course progr;
                 adapter.clear();
                 for (DataSnapshot progrSnapshot : dataSnapshot.getChildren()) {
-                    progr = progrSnapshot.getValue(Programme.class);
+                    progr = progrSnapshot.getValue(Course.class);
                     adapter.add(progr);
                 }
             }

@@ -11,17 +11,52 @@
         layout="@layout/app_bar" />
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/input_layout_password"
+        android:id="@+id/wrapper_course_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp">
+        android:paddingTop="16dp"
+        android:theme="@style/TextInputLayout">
 
         <EditText
             android:id="@+id/input_course_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/course_name" />
+            android:textSize="24sp" />
 
     </android.support.design.widget.TextInputLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:text="Campus: " />
+
+        <Spinner
+            android:id="@+id/campus_location_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type/ Level: " />
+
+        <Spinner
+            android:id="@+id/course_type_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

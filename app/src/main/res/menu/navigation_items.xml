@@ -13,9 +13,9 @@
             android:title="@string/home" />
 
         <item
-            android:id="@+id/drawer_favourite"
-            android:icon="@mipmap/ic_favorite_black_24dp"
-            android:title="@string/favourite" />
+            android:id="@+id/drawer_course"
+            android:icon="@mipmap/ic_class_black_24dp"
+            android:title="@string/course" />
     </group>
 
     <group

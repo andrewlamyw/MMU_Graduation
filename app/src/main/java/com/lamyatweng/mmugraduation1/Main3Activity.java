@@ -4,6 +4,8 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -18,7 +20,7 @@ public class Main3Activity extends AppCompatActivity {
     ActionBarDrawerToggle mDrawerToggle;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_view);
 
@@ -38,7 +40,7 @@ public class Main3Activity extends AppCompatActivity {
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
-                toolbar,  /* Toolbar to inject into */
+                toolbar,               /* Toolbar to inject into */
                 R.string.drawer_open,  /* "open drawer" description */
                 R.string.drawer_close  /* "close drawer" description */
         ) {
@@ -68,7 +70,39 @@ public class Main3Activity extends AppCompatActivity {
         view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-                Snackbar.make(view, menuItem.getTitle() + " pressed", Snackbar.LENGTH_LONG).show();
+                // Check that the activity is using the layout version with
+                // the fragment_container FrameLayout
+                if (findViewById(R.id.fragment_container) != null) {
+
+                    // However, if we're being restored from a previous state,
+                    // then we don't need to do anything and should return or else
+                    // we could end up with overlapping fragments.
+                    if (savedInstanceState != null) {
+                        return false;
+                    }
+
+                    switch (menuItem.getTitle().toString()) {
+                        case "Course":
+                            // Create a new Fragment to be placed in the activity layout
+                            CourseFragment courseFragment = new CourseFragment();
+
+                            // In case this activity was started with special instructions from an
+                            // Intent, pass the Intent's extras to the fragment as arguments
+                            courseFragment.setArguments(getIntent().getExtras());
+
+                            // Add the fragment to the 'fragment_container' FrameLayout
+                            // Replace whatever is in the fragment_container view with this fragment,
+                            // and add the transaction to the back stack so the user can navigate back
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            FragmentTransaction transaction = fragmentManager.beginTransaction();
+                            transaction.replace(R.id.fragment_container, courseFragment);
+                            transaction.commit();
+                            Snackbar.make(view, "Loading", Snackbar.LENGTH_LONG).show();
+                            break;
+                    }
+                }
+
+//                Snackbar.make(view, menuItem.getTitle() + " pressed", Snackbar.LENGTH_LONG).show();
                 menuItem.setChecked(true);
                 mDrawerLayout.closeDrawers();
                 return false;
@@ -76,7 +110,7 @@ public class Main3Activity extends AppCompatActivity {
         });
     }
 
-    // for Open and Close with the App Icon purpose
+    // for Open and Close with the ActionBar Icon purpose
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -89,7 +123,7 @@ public class Main3Activity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // for Open and Close with the App Icon purpose
+    // for Open and Close with the ActionBar Icon purpose
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -97,7 +131,7 @@ public class Main3Activity extends AppCompatActivity {
         mDrawerToggle.syncState();
     }
 
-    // for Open and Close with the App Icon purpose
+    // for Open and Close with the ActionBar Icon purpose
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);

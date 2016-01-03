@@ -1,23 +1,20 @@
 package com.lamyatweng.mmugraduation1.model;
 
-/**
- * Created by choco on 24/12/2015.
- */
-public class Programme {
+public class Course {
     String name;
     String campus;
     String type;
 
-    public Programme() {
+    public Course() {
     }
 
-    public Programme(String type, String campus, String name) {
+    public Course(String name, String campus, String type) {
         this.type = type;
         this.campus = campus;
         this.name = name;
     }
 
-    public Programme(String campus, String name) {
+    public Course(String campus, String name) {
         this.campus = campus;
         this.name = name;
     }
