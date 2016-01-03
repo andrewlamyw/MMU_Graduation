@@ -1,19 +1,22 @@
 <resources>
     <string name="app_name">MMU Graduation</string>
-    <string-array name="functions_array">
-        <item>Profile</item>
-        <item>Course</item>
-        <item>Graduation</item>
-    </string-array>
-    <string-array name="campus_locations_array">
-        <item>Cyberjaya</item>
-        <item>Melaka</item>
-    </string-array>
-    <string-array name="course_types_array">
+    <string-array name="course_levels_array">
         <item>Diploma</item>
-        <item>Degree</item>
-        <item>Masters</item>
-        <item>Ph.D.</item>
+        <item>Bachelor\'s Degree</item>
+        <item>Master\'s Degree</item>
+        <item>Doctorate</item>
+    </string-array>
+    <string-array name="faculties_array">
+        <item>Centre for Diploma Programme</item>
+        <item>Faculty of Business</item>
+        <item>Faculty of Computing and Informatics</item>
+        <item>Faculty of Creative Multimedia</item>
+        <item>Faculty of Engineering</item>
+        <item>Faculty of Engineering and Technology</item>
+        <item>Faculty of Information Science and Technology</item>
+        <item>Faculty of Law</item>
+        <item>Faculty of Management</item>
+        <item>Graduate School of Management</item>
     </string-array>
     <string name="drawer_open">Drawer open</string>
     <string name="drawer_close">Drawer close</string>
@@ -31,4 +34,6 @@
     <string name="help">Help</string>
     <string name="help_feedback"><![CDATA[Help & feedback]]></string>
     <string name="course">Course</string>
+    <string name="profile">Profile</string>
+    <string name="student">Student</string>
 </resources>

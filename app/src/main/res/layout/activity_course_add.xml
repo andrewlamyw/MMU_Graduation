@@ -21,6 +21,7 @@
             android:id="@+id/input_course_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Course Name"
             android:textSize="24sp" />
 
     </android.support.design.widget.TextInputLayout>
@@ -34,11 +35,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:text="Campus: " />
+            android:text="Faculty: " />
 
         <Spinner
-            android:id="@+id/campus_location_spinner"
+            android:id="@+id/faculty_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -52,10 +52,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Type/ Level: " />
+            android:text="Level: " />
 
         <Spinner
-            android:id="@+id/course_type_spinner"
+            android:id="@+id/course_level_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>

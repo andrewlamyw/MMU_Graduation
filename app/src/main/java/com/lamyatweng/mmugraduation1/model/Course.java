@@ -2,33 +2,28 @@ package com.lamyatweng.mmugraduation1.model;
 
 public class Course {
     String name;
-    String campus;
-    String type;
+    String faculty;
+    String level;
 
     public Course() {
+        // Compulsory
     }
 
-    public Course(String name, String campus, String type) {
-        this.type = type;
-        this.campus = campus;
+    public Course(String name, String faculty, String level) {
         this.name = name;
+        this.faculty = faculty;
+        this.level = level;
     }
 
-    public Course(String campus, String name) {
-        this.campus = campus;
-        this.name = name;
-    }
-
-    public String getType() {
-        return type;
+    public String getLevel() {
+        return level;
     }
 
     public String getName() {
         return name;
-
     }
 
-    public String getCampus() {
-        return campus;
+    public String getFaculty() {
+        return faculty;
     }
 }

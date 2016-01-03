@@ -21,46 +21,43 @@ import com.lamyatweng.mmugraduation1.model.Course;
 public class CourseAddActivity extends AppCompatActivity {
     Firebase mFirebaseCourseRef;
     TextInputLayout mCourseNameWrapper;
-    Spinner mCampusLocationSpinner;
-    Spinner mCourseTypeSpinner;
+    Spinner mCourseFacultySpinner;
+    Spinner mCourseLevelSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
+        mFirebaseCourseRef = new Firebase("https://mmugraduation.firebaseio.com/courses");
         setContentView(R.layout.activity_course_add);
 
-        mFirebaseCourseRef = new Firebase("https://mmugraduation.firebaseio.com/courses");
-
-
-        // Set action bar
+        // Set up action bar
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
         // Enable the Up button
-        ActionBar ab = getSupportActionBar();
-        if (ab != null) {
-            ab.setDisplayHomeAsUpEnabled(true);
-            ab.setTitle("New Course");
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle("New Course");
         }
 
-        // Initialize course name text input
+        // Initialize courseName textInput
         mCourseNameWrapper = (TextInputLayout) findViewById(R.id.wrapper_course_name);
-        mCourseNameWrapper.setHint("Course Name");
         mCourseNameWrapper.setErrorEnabled(true);
 
-        // Initialize campus location spinner
-        mCampusLocationSpinner = (Spinner) findViewById(R.id.campus_location_spinner);
-        ArrayAdapter<CharSequence> campusLocationAdapter = ArrayAdapter.createFromResource(this,
-                R.array.campus_locations_array, android.R.layout.simple_spinner_item);
-        campusLocationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mCampusLocationSpinner.setAdapter(campusLocationAdapter);
+        // Initialize courseFaculty spinner
+        mCourseFacultySpinner = (Spinner) findViewById(R.id.faculty_spinner);
+        ArrayAdapter<CharSequence> courseFacultyAdapter = ArrayAdapter.createFromResource(this,
+                R.array.faculties_array, android.R.layout.simple_spinner_item);
+        courseFacultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mCourseFacultySpinner.setAdapter(courseFacultyAdapter);
 
-        // Initialize course type spinner
-        mCourseTypeSpinner = (Spinner) findViewById(R.id.course_type_spinner);
-        ArrayAdapter<CharSequence> courseTypeAdapter = ArrayAdapter.createFromResource(this,
-                R.array.course_types_array, android.R.layout.simple_spinner_item);
-        courseTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mCourseTypeSpinner.setAdapter(courseTypeAdapter);
+        // Initialize courseLevel spinner
+        mCourseLevelSpinner = (Spinner) findViewById(R.id.course_level_spinner);
+        ArrayAdapter<CharSequence> courseLevelAdapter = ArrayAdapter.createFromResource(this,
+                R.array.course_levels_array, android.R.layout.simple_spinner_item);
+        courseLevelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mCourseLevelSpinner.setAdapter(courseLevelAdapter);
     }
 
     @Override
@@ -82,15 +79,15 @@ public class CourseAddActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add_course:
-                String campusLocation = mCampusLocationSpinner.getSelectedItem().toString();
-                String courseType = mCourseTypeSpinner.getSelectedItem().toString();
+                String courseFaculty = mCourseFacultySpinner.getSelectedItem().toString();
+                String courseLevel = mCourseLevelSpinner.getSelectedItem().toString();
 
-                // Error will be shown if courseName is empty
+                // Error will be shown if courseName is blank
                 if (mCourseNameWrapper.getEditText() != null &&
                         !"".equals(mCourseNameWrapper.getEditText().getText().toString())) {
 
                     String courseName = mCourseNameWrapper.getEditText().getText().toString();
-                    Course newCourse = new Course(courseName, campusLocation, courseType);
+                    Course newCourse = new Course(courseName, courseFaculty, courseLevel);
                     mFirebaseCourseRef.push().setValue(newCourse);
                     mCourseNameWrapper.setErrorEnabled(false);
                     hideKeyboard();
@@ -98,11 +95,11 @@ public class CourseAddActivity extends AppCompatActivity {
                     if (view != null) {
                         Snackbar.make(view, "Successfully added", Snackbar.LENGTH_LONG).show();
                     }
-
                 } else {
-                    mCourseNameWrapper.setError("Course name should not be empty.");
+                    mCourseNameWrapper.setError("Course name should not be blank.");
                 }
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

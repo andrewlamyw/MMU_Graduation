@@ -2,6 +2,7 @@ package com.lamyatweng.mmugraduation1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -45,13 +46,13 @@ public class CourseFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
-        getActivity().getMenuInflater().inflate(R.menu.programme_menu, menu);
+        getActivity().getMenuInflater().inflate(R.menu.course_menu, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_add_progr:
+            case R.id.action_add_course:
                 Intent intent = new Intent(getActivity(), CourseAddActivity.class);
                 getActivity().startActivity(intent);
                 return true;
@@ -63,7 +64,6 @@ public class CourseFragment extends Fragment {
                 return true;
 
             case R.id.action_settings:
-                // User chose the "Settings" item, show the app settings UI...
                 return true;
 
             default:
@@ -75,26 +75,28 @@ public class CourseFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_course, container, false);
-        ListView programmeView = (ListView) rootView.findViewById(R.id.programme_list_1);
-        final CustomProgrammesAdapter adapter = new CustomProgrammesAdapter(getActivity());
+        final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_course, container, false);
+        ListView courseListView = (ListView) rootView.findViewById(R.id.course_list_view);
+
+        final CustomCoursesAdapter adapter = new CustomCoursesAdapter(getActivity());
         mCourseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Course progr;
+                Course course;
                 adapter.clear();
-                for (DataSnapshot progrSnapshot : dataSnapshot.getChildren()) {
-                    progr = progrSnapshot.getValue(Course.class);
-                    adapter.add(progr);
+                for (DataSnapshot courseSnapshot : dataSnapshot.getChildren()) {
+                    course = courseSnapshot.getValue(Course.class);
+                    adapter.add(course);
                 }
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
-
+                Snackbar.make(rootView, firebaseError.getMessage(), Snackbar.LENGTH_LONG).show();
             }
         });
-        programmeView.setAdapter(adapter);
+        courseListView.setAdapter(adapter);
+
         return rootView;
     }
 }

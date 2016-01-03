@@ -14,20 +14,6 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
         <activity
-            android:name=".Main2Activity"
-            android:parentActivityName=".CourseActivity"
-            tools:ignore="UnusedAttribute">
-            <!-- Parent activity meta-data to support 4.0 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".CourseActivity" />
-        </activity>
-
-        <activity android:name=".MainActivity">
-
-        </activity>
-
-        <activity
             android:name=".CourseAddActivity"
             android:parentActivityName=".MainActivity"
             tools:ignore="UnusedAttribute">
@@ -38,7 +24,7 @@
         </activity>
 
         <activity
-            android:name=".Main3Activity"
+            android:name=".MainActivity"
             android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

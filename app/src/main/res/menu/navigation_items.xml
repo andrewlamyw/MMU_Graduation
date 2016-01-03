@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Main3Activity">
+    tools:context=".MainActivity">
 
     <group
         android:id="@+id/root_menu_drawer"
@@ -16,6 +16,16 @@
             android:id="@+id/drawer_course"
             android:icon="@mipmap/ic_class_black_24dp"
             android:title="@string/course" />
+
+        <item
+            android:id="@+id/drawer_profile"
+            android:icon="@mipmap/ic_account_circle_black_24dp"
+            android:title="@string/profile" />
+
+        <item
+            android:id="@+id/drawer_student"
+            android:icon="@mipmap/ic_group_black_24dp"
+            android:title="@string/student" />
     </group>
 
     <group
