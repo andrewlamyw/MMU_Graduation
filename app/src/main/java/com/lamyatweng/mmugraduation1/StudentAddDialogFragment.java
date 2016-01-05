@@ -22,6 +22,7 @@ public class StudentAddDialogFragment extends DialogFragment {
     TextInputLayout mStudentNameWrapper;
     TextInputLayout mStudentIdWrapper;
     Spinner mCourseSpinner;
+    Spinner mStatusSpinner;
     TextInputLayout mBalanceCreditHour;
     TextInputLayout mCgpa;
     Spinner mMuet;
@@ -42,25 +43,31 @@ public class StudentAddDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_student_add, container, false);
-
+        // name
         mStudentNameWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_student_name);
         mStudentIdWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_student_id);
-
+        // course
         mCourseSpinner = (Spinner) view.findViewById(R.id.course_spinner);
         ArrayAdapter<CharSequence> courseAdapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.course_array, android.R.layout.simple_spinner_item);
         courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mCourseSpinner.setAdapter(courseAdapter);
-
+        // status
+        mStatusSpinner = (Spinner) view.findViewById(R.id.status_spinner);
+        ArrayAdapter<CharSequence> statusAdapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.status_array, android.R.layout.simple_spinner_item);
+        statusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mStatusSpinner.setAdapter(statusAdapter);
+        // credit hour
         mBalanceCreditHour = (TextInputLayout) view.findViewById(R.id.wrapper_student_balanceCreditHour);
         mCgpa = (TextInputLayout) view.findViewById(R.id.wrapper_student_cgpa);
-
+        // muet
         mMuet = (Spinner) view.findViewById(R.id.muet_spinner);
         ArrayAdapter<CharSequence> muetAdapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.muet_array, android.R.layout.simple_spinner_item);
         muetAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mMuet.setAdapter(muetAdapter);
-
+        // financial
         mFinancialDue = (TextInputLayout) view.findViewById(R.id.wrapper_student_financialDue);
 
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
@@ -79,12 +86,13 @@ public class StudentAddDialogFragment extends DialogFragment {
                 String name = mStudentNameWrapper.getEditText().getText().toString();
                 int id = Integer.parseInt(mStudentIdWrapper.getEditText().getText().toString());
                 String course = mCourseSpinner.getSelectedItem().toString();
+                String status = mStatusSpinner.getSelectedItem().toString();
                 int balanceCreditHour = Integer.parseInt(mBalanceCreditHour.getEditText().getText().toString());
                 double cgpa = Double.parseDouble(mCgpa.getEditText().getText().toString());
                 int muet = Integer.parseInt(mMuet.getSelectedItem().toString());
                 double financialDue = Double.parseDouble(mFinancialDue.getEditText().getText().toString());
 
-                Student newStudent = new Student(name, id, course, balanceCreditHour, cgpa, muet, financialDue);
+                Student newStudent = new Student(name, id, course, status, balanceCreditHour, cgpa, muet, financialDue);
                 mFirebaseStudentRef.push().setValue(newStudent);
                 Toast.makeText(getActivity(), "Student added.", Toast.LENGTH_SHORT).show();
                 // Close dialog

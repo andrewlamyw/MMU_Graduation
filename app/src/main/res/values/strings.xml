@@ -24,6 +24,12 @@
         <item>Diploma in Business Information Systems</item>
         <item>Diploma in Electronic Engineering</item>
     </string-array>
+    <string-array name="status_array">
+        <item>Active</item>
+        <item>Complete</item>
+        <item>Pending finance</item>
+        <item>Pending MUET</item>
+    </string-array>
     <string-array name="muet_array">
         <item>1</item>
         <item>2</item>

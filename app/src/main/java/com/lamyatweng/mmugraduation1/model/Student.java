@@ -4,6 +4,7 @@ public class Student {
     String name;
     int id;
     String course;
+    String status;
     int balanceCreditHour;
     double cgpa;
     int muet;
@@ -12,10 +13,12 @@ public class Student {
     public Student() {
     }
 
-    public Student(String name, int id, String course, int balanceCreditHour, double cgpa, int muet, double financialDue) {
+    public Student(String name, int id, String course, String status, int balanceCreditHour, double cgpa, int muet, double financialDue) {
+
         this.name = name;
         this.id = id;
         this.course = course;
+        this.status = status;
         this.balanceCreditHour = balanceCreditHour;
         this.cgpa = cgpa;
         this.muet = muet;
@@ -32,6 +35,10 @@ public class Student {
 
     public String getCourse() {
         return course;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
     public int getBalanceCreditHour() {
