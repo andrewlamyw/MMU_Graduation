@@ -9,8 +9,9 @@ import android.widget.TextView;
 
 import com.lamyatweng.mmugraduation1.model.Course;
 
-public class CustomCoursesAdapter extends ArrayAdapter<Course> {
-    public CustomCoursesAdapter(Context context) {
+public class CustomCourseAdapter extends ArrayAdapter<Course> {
+
+    public CustomCourseAdapter(Context context) {
         super(context, 0);
     }
 

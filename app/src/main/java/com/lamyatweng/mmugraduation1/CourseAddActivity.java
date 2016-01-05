@@ -48,14 +48,14 @@ public class CourseAddActivity extends AppCompatActivity {
         // Initialize courseFaculty spinner
         mCourseFacultySpinner = (Spinner) findViewById(R.id.faculty_spinner);
         ArrayAdapter<CharSequence> courseFacultyAdapter = ArrayAdapter.createFromResource(this,
-                R.array.faculties_array, android.R.layout.simple_spinner_item);
+                R.array.faculty_array, android.R.layout.simple_spinner_item);
         courseFacultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mCourseFacultySpinner.setAdapter(courseFacultyAdapter);
 
         // Initialize courseLevel spinner
         mCourseLevelSpinner = (Spinner) findViewById(R.id.course_level_spinner);
         ArrayAdapter<CharSequence> courseLevelAdapter = ArrayAdapter.createFromResource(this,
-                R.array.course_levels_array, android.R.layout.simple_spinner_item);
+                R.array.course_level_array, android.R.layout.simple_spinner_item);
         courseLevelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mCourseLevelSpinner.setAdapter(courseLevelAdapter);
     }

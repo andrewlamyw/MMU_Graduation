@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">MMU Graduation</string>
-    <string-array name="course_levels_array">
+    <string-array name="course_level_array">
         <item>Diploma</item>
         <item>Bachelor\'s Degree</item>
         <item>Master\'s Degree</item>
         <item>Doctorate</item>
     </string-array>
-    <string-array name="faculties_array">
+    <string-array name="faculty_array">
         <item>Centre for Diploma Programme</item>
         <item>Faculty of Business</item>
         <item>Faculty of Computing and Informatics</item>
@@ -17,6 +17,20 @@
         <item>Faculty of Law</item>
         <item>Faculty of Management</item>
         <item>Graduate School of Management</item>
+    </string-array>
+    <string-array name="course_array">
+        <item>Diploma in Accounting</item>
+        <item>Diploma in Business Administration</item>
+        <item>Diploma in Business Information Systems</item>
+        <item>Diploma in Electronic Engineering</item>
+    </string-array>
+    <string-array name="muet_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
     </string-array>
     <string name="drawer_open">Drawer open</string>
     <string name="drawer_close">Drawer close</string>
@@ -36,4 +50,5 @@
     <string name="course">Course</string>
     <string name="profile">Profile</string>
     <string name="student">Student</string>
+    <string name="save">SAVE</string>
 </resources>

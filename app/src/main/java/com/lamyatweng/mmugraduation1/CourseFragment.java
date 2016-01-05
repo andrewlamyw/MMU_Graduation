@@ -1,9 +1,9 @@
 package com.lamyatweng.mmugraduation1;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -29,7 +29,7 @@ public class CourseFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Firebase.setAndroidContext(getContext());
+        Firebase.setAndroidContext(getActivity());
         mCourseRef = new Firebase("https://mmugraduation.firebaseio.com/courses");
         this.setHasOptionsMenu(true);
     }
@@ -78,7 +78,7 @@ public class CourseFragment extends Fragment {
         final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_course, container, false);
         ListView courseListView = (ListView) rootView.findViewById(R.id.course_list_view);
 
-        final CustomCoursesAdapter adapter = new CustomCoursesAdapter(getActivity());
+        final CustomCourseAdapter adapter = new CustomCourseAdapter(getActivity());
         mCourseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
