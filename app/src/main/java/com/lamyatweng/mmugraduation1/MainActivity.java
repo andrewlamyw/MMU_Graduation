@@ -12,6 +12,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.lamyatweng.mmugraduation1.Programme.ProgrammeFragment;
+import com.lamyatweng.mmugraduation1.Student.StudentFragment;
+
 public class MainActivity extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     ActionBarDrawerToggle mDrawerToggle;
@@ -71,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
                         case "Student":
                             StudentFragment studentFragment = new StudentFragment();
                             getFragmentManager().beginTransaction().replace(R.id.fragment_container, studentFragment).commit();
-                            getSupportActionBar().setTitle("Student");
                     }
                 }
                 menuItem.setChecked(true);

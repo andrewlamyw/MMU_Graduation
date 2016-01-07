@@ -3,12 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_add_course"
-        android:icon="@mipmap/ic_add_white_48dp"
-        android:title="@string/add"
-        app:showAsAction="ifRoom" />
-
-    <item
         android:id="@+id/action_search"
         android:icon="@mipmap/ic_search_white_24dp"
         android:title="@string/search"

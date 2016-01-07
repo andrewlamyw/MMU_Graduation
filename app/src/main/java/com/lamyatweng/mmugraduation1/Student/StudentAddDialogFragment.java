@@ -1,4 +1,4 @@
-package com.lamyatweng.mmugraduation1;
+package com.lamyatweng.mmugraduation1.Student;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -15,7 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
-import com.lamyatweng.mmugraduation1.model.Student;
+import com.lamyatweng.mmugraduation1.R;
 
 public class StudentAddDialogFragment extends DialogFragment {
     Firebase mFirebaseStudentRef;
@@ -46,13 +46,14 @@ public class StudentAddDialogFragment extends DialogFragment {
         final View view = inflater.inflate(R.layout.fragment_student_add, container, false);
         // name
         mStudentNameWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_student_name);
+        // email
         mStudentIdWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_email);
         // course
         mProgrammeSpinner = (Spinner) view.findViewById(R.id.programme_spinner);
-        ArrayAdapter<CharSequence> courseAdapter = ArrayAdapter.createFromResource(getActivity(),
+        ArrayAdapter<CharSequence> programmeAdapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.programme_array, android.R.layout.simple_spinner_item);
-        courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mProgrammeSpinner.setAdapter(courseAdapter);
+        programmeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mProgrammeSpinner.setAdapter(programmeAdapter);
         // status
         mStatusSpinner = (Spinner) view.findViewById(R.id.status_spinner);
         ArrayAdapter<CharSequence> statusAdapter = ArrayAdapter.createFromResource(getActivity(),
@@ -104,7 +105,6 @@ public class StudentAddDialogFragment extends DialogFragment {
                 return false;
             }
         });
-
 
         return view;
     }

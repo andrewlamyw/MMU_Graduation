@@ -1,4 +1,4 @@
-package com.lamyatweng.mmugraduation1.model;
+package com.lamyatweng.mmugraduation1.Student;
 
 public class Student {
     String name;

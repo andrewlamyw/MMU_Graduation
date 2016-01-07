@@ -1,4 +1,4 @@
-package com.lamyatweng.mmugraduation1;
+package com.lamyatweng.mmugraduation1.Student;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
-import com.lamyatweng.mmugraduation1.model.Student;
+import com.lamyatweng.mmugraduation1.R;
 
 public class StudentFragment extends Fragment {
 
@@ -32,6 +33,14 @@ public class StudentFragment extends Fragment {
         mStudentRef = new Firebase("https://mmugraduation.firebaseio.com/students");
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        android.support.v7.app.ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null)
+            actionBar.setTitle("Student");
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
@@ -39,7 +48,7 @@ public class StudentFragment extends Fragment {
         ListView studentListView = (ListView) rootView.findViewById(R.id.student_list_view);
         FloatingActionButton addStudentFab = (FloatingActionButton) rootView.findViewById(R.id.add_student_fab);
 
-        final CustomStudentAdapter adapter = new CustomStudentAdapter(getActivity());
+        final StudentCustomAdapter adapter = new StudentCustomAdapter(getActivity());
         mStudentRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

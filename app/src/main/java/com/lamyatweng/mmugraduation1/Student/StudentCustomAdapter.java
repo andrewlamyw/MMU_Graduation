@@ -1,4 +1,4 @@
-package com.lamyatweng.mmugraduation1;
+package com.lamyatweng.mmugraduation1.Student;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.lamyatweng.mmugraduation1.model.Student;
+import com.lamyatweng.mmugraduation1.R;
 
-public class CustomStudentAdapter extends ArrayAdapter<Student> {
+public class StudentCustomAdapter extends ArrayAdapter<Student> {
 
-    public CustomStudentAdapter(Context context) {
+    public StudentCustomAdapter(Context context) {
         super(context, 0);
     }
 
