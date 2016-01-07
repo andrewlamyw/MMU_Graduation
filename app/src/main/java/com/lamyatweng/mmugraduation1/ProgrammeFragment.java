@@ -17,12 +17,12 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
-import com.lamyatweng.mmugraduation1.model.Course;
+import com.lamyatweng.mmugraduation1.model.Programme;
 
-public class CourseFragment extends Fragment {
+public class ProgrammeFragment extends Fragment {
     Firebase mCourseRef;
 
-    public CourseFragment() {
+    public ProgrammeFragment() {
         // Empty constructor required for fragment subclasses
     }
 
@@ -39,7 +39,7 @@ public class CourseFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         android.support.v7.app.ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         if (actionBar != null)
-            actionBar.setTitle(getResources().getString(R.string.course));
+            actionBar.setTitle("Program");
     }
 
     @Override
@@ -53,7 +53,7 @@ public class CourseFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add_course:
-                Intent intent = new Intent(getActivity(), CourseAddActivity.class);
+                Intent intent = new Intent(getActivity(), ProgrammeAddActivity.class);
                 getActivity().startActivity(intent);
                 return true;
 
@@ -75,18 +75,18 @@ public class CourseFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_course, container, false);
+        final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_programme, container, false);
         ListView courseListView = (ListView) rootView.findViewById(R.id.course_list_view);
 
-        final CustomCourseAdapter adapter = new CustomCourseAdapter(getActivity());
+        final CustomProgrammeAdapter adapter = new CustomProgrammeAdapter(getActivity());
         mCourseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Course course;
+                Programme programme;
                 adapter.clear();
                 for (DataSnapshot courseSnapshot : dataSnapshot.getChildren()) {
-                    course = courseSnapshot.getValue(Course.class);
-                    adapter.add(course);
+                    programme = courseSnapshot.getValue(Programme.class);
+                    adapter.add(programme);
                 }
             }
 

@@ -2,30 +2,33 @@ package com.lamyatweng.mmugraduation1.model;
 
 public class Student {
     String name;
-    int id;
-    String course;
+    String id;
+    String programme;
     String status;
+    String email;
     int balanceCreditHour;
     double cgpa;
     int muet;
     double financialDue;
 
     public Student() {
+        // empty default constructor, necessary for Firebase to be able to deserialize
     }
 
-    public Student(String name, int id, String course, String status, int balanceCreditHour, double cgpa, int muet, double financialDue) {
-
+    public Student(String name, String id, String programme, String status, String email,
+                   int balanceCreditHour, double cgpa, int muet, double financialDue) {
         this.name = name;
         this.id = id;
-        this.course = course;
+        this.programme = programme;
         this.status = status;
+        this.email = email;
         this.balanceCreditHour = balanceCreditHour;
         this.cgpa = cgpa;
         this.muet = muet;
         this.financialDue = financialDue;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -33,12 +36,16 @@ public class Student {
         return name;
     }
 
-    public String getCourse() {
-        return course;
+    public String getProgramme() {
+        return programme;
     }
 
     public String getStatus() {
         return status;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public int getBalanceCreditHour() {

@@ -1,15 +1,15 @@
 package com.lamyatweng.mmugraduation1.model;
 
-public class Course {
+public class Programme {
     String name;
     String faculty;
     String level;
 
-    public Course() {
-        // Compulsory
+    public Programme() {
+        // empty default constructor, necessary for Firebase to be able to deserialize
     }
 
-    public Course(String name, String faculty, String level) {
+    public Programme(String name, String faculty, String level) {
         this.name = name;
         this.faculty = faculty;
         this.level = level;

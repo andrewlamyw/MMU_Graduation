@@ -58,18 +58,20 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     switch (menuItem.getTitle().toString()) {
-                        case "Course":
-                            CourseFragment courseFragment = new CourseFragment();
-                            getFragmentManager().beginTransaction().replace(R.id.fragment_container, courseFragment).commit();
+                        case "Program":
+                            ProgrammeFragment programmeFragment = new ProgrammeFragment();
+                            getFragmentManager().beginTransaction().replace(R.id.fragment_container, programmeFragment).commit();
                             Snackbar.make(view, "Loading", Snackbar.LENGTH_LONG).show();
                             break;
                         case "Profile":
                             ProfileFragment profileFragment = new ProfileFragment();
                             getFragmentManager().beginTransaction().replace(R.id.fragment_container, profileFragment).commit();
+                            getSupportActionBar().setTitle("Profile");
                             break;
                         case "Student":
                             StudentFragment studentFragment = new StudentFragment();
                             getFragmentManager().beginTransaction().replace(R.id.fragment_container, studentFragment).commit();
+                            getSupportActionBar().setTitle("Student");
                     }
                 }
                 menuItem.setChecked(true);

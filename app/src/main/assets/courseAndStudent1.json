@@ -1,0 +1,492 @@
+{
+  "courses": [
+    {
+      "name": "Diploma in Accounting",
+      "faculty": "Centre for Diploma Programme",
+      "level": "Diploma"
+    },
+    {
+      "name": "Diploma in Business Administration",
+      "faculty": "Centre for Diploma Programme",
+      "level": "Diploma"
+    },
+    {
+      "name": "Diploma in Business Information Systems",
+      "faculty": "Centre for Diploma Programme",
+      "level": "Diploma"
+    },
+    {
+      "name": "Diploma in Electronic Engineering",
+      "faculty": "Centre for Diploma Programme",
+      "level": "Diploma"
+    },
+    {
+      "name": "Diploma in Information Technology",
+      "faculty": "Centre for Diploma Programme",
+      "level": "Diploma"
+    },
+    {
+      "name": "Diploma in Telecommunication Engineering",
+      "faculty": "Centre for Diploma Programme",
+      "level": "Diploma"
+    },
+    {
+      "name": "Bachelor of Accounting (Honours)",
+      "faculty": "Faculty of Business",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Business Administration (Honours) (Banking and Finance)",
+      "faculty": "Faculty of Business",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Business Administration (Honours) (Entrepreneurship)",
+      "faculty": "Faculty of Business",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Business Administration (Honours) (Human Resource Management)",
+      "faculty": "Faculty of Business",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Business Administration (Honours) (International Business)",
+      "faculty": "Faculty of Business",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Business Administration (Honours) (Marketing Management)",
+      "faculty": "Faculty of Business",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Business and Knowledge Management (Honours)",
+      "faculty": "Faculty of Business",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Economics (Honours) (International Economics)",
+      "faculty": "Faculty of Business",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Doctor of Philosophy (Management)",
+      "faculty": "Faculty of Business",
+      "level": "Doctorate"
+    },
+    {
+      "name": "Master of Philosophy (Management)",
+      "faculty": "Faculty of Business",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Bachelor of Multimedia (Honours) (Software Engineering and Games Design)",
+      "faculty": "Faculty of Computing and Informatics",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Computer Science (Honours)",
+      "faculty": "Faculty of Computing and Informatics",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Information Technology (Honours) (Information System Engineering)",
+      "faculty": "Faculty of Computing and Informatics",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Information Technology (Honours) (Multimedia Systems)",
+      "faculty": "Faculty of Computing and Informatics",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Information Technology (Honours) (Software Engineering)",
+      "faculty": "Faculty of Computing and Informatics",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Doctor of Philosophy (Information Technology)",
+      "faculty": "Faculty of Computing and Informatics",
+      "level": "Doctorate"
+    },
+    {
+      "name": "Master of Science (Information Technology)",
+      "faculty": "Faculty of Computing and Informatics",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Master of Computer Science in Software Engineering and Software Architecture",
+      "faculty": "Faculty of Computing and Informatics",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Master of Information Technology in Multimedia Computing",
+      "faculty": "Faculty of Computing and Informatics",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Bachelor of Multimedia (Honours) (Digital Media)",
+      "faculty": "Faculty of Creative Multimedia",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Multimedia (Honours) (Film and Animation)",
+      "faculty": "Faculty of Creative Multimedia",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Multimedia (Honours) (Interface Design)",
+      "faculty": "Faculty of Creative Multimedia",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Multimedia (Honours) (Media Innovation)",
+      "faculty": "Faculty of Creative Multimedia",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Multimedia (Honours) (Virtual Reality)",
+      "faculty": "Faculty of Creative Multimedia",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Multimedia (Honours) (Animation and Visual Effects)",
+      "faculty": "Faculty of Creative Multimedia",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Multimedia (Honours) (Media Arts)",
+      "faculty": "Faculty of Creative Multimedia",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Multimedia(Honours) (Advertising Design)",
+      "faculty": "Faculty of Creative Multimedia",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Doctor of Philosophy (Creative Multimedia)",
+      "faculty": "Faculty of Creative Multimedia",
+      "level": "Doctorate"
+    },
+    {
+      "name": "Master of Science (Creative Multimedia)",
+      "faculty": "Faculty of Creative Multimedia",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Master of Knowledge Management with Multimedia",
+      "faculty": "Faculty of Creative Multimedia",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Master of Multimedia (E-Learning Technologies)",
+      "faculty": "Faculty of Creative Multimedia",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Bachelor of Engineering (Honours) Electrical",
+      "faculty": "Faculty of Engineering",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Engineering (Honours) Electronics",
+      "faculty": "Faculty of Engineering",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Engineering (Honours) Electronics majoring in Computer",
+      "faculty": "Faculty of Engineering",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Engineering (Honours) Electronics majoring in Microwave and Communications",
+      "faculty": "Faculty of Engineering",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Engineering (Honours) Electronics majoring in Multimedia",
+      "faculty": "Faculty of Engineering",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Engineering (Honours) Electronics majoring in Nanotechnology",
+      "faculty": "Faculty of Engineering",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Engineering (Honours) Electronics majoring in Optical Engineering",
+      "faculty": "Faculty of Engineering",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Engineering (Honours) Electronics majoring in Telecommunications",
+      "faculty": "Faculty of Engineering",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Doctor of Philosophy (Engineering)",
+      "faculty": "Faculty of Engineering",
+      "level": "Doctorate"
+    },
+    {
+      "name": "Master of Engineering Science",
+      "faculty": "Faculty of Engineering",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Master of Electrical and Electronic Engineering",
+      "faculty": "Faculty of Engineering",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Master of Engineering in Microelectronics",
+      "faculty": "Faculty of Engineering",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Master of Engineering in Telecommunications",
+      "faculty": "Faculty of Engineering",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Bachelor of Engineering (Honours) Electronics majoring in Bio-Instrumentation",
+      "faculty": "Faculty of Engineering and Technology",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Engineering (Honours) Electronics majoring in Robotics and Automation",
+      "faculty": "Faculty of Engineering and Technology",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Engineering (Honours) Electronics majoring in Telecommunications",
+      "faculty": "Faculty of Engineering and Technology",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Engineering (Honours) Mechanical",
+      "faculty": "Faculty of Engineering and Technology",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Doctor of Philosophy (Engineering)",
+      "faculty": "Faculty of Engineering and Technology",
+      "level": "Doctorate"
+    },
+    {
+      "name": "Master of Engineering Science",
+      "faculty": "Faculty of Engineering and Technology",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Master of Engineering in Embedded System",
+      "faculty": "Faculty of Engineering and Technology",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Bachelor of Information Technology (Honours) (Artificial Intelligence)",
+      "faculty": "Faculty of Information Science and Technology",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Information Technology (Honours) (Business Information System)",
+      "faculty": "Faculty of Information Science and Technology",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Information Technology (Honours) (Data Communications and Networking)",
+      "faculty": "Faculty of Information Science and Technology",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Information Technology (Honours) (Information Technology Management)",
+      "faculty": "Faculty of Information Science and Technology",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Information Technology (Honours) (Security Technology)",
+      "faculty": "Faculty of Information Science and Technology",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Science (Honours) Bioinformatics",
+      "faculty": "Faculty of Information Science and Technology",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Doctor of Philosophy (Information Technology)",
+      "faculty": "Faculty of Information Science and Technology",
+      "level": "Doctorate"
+    },
+    {
+      "name": "Master of Science (Information Technology)",
+      "faculty": "Faculty of Information Science and Technology",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Bachelor of Law (Honours)",
+      "faculty": "Faculty of Law",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Accounting (Honours)",
+      "faculty": "Faculty of Management",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Business Administration (Honours) (Finance with Multimedia)",
+      "faculty": "Faculty of Management",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Business Administration (Honours) (Management with Multimedia)",
+      "faculty": "Faculty of Management",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Business Administration (Honours) (Marketing with Multimedia)",
+      "faculty": "Faculty of Management",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Economics (Honours) (Analytical Economics)",
+      "faculty": "Faculty of Management",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Electronic Commerce (Honours)",
+      "faculty": "Faculty of Management",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Financial Engineering (Honours)",
+      "faculty": "Faculty of Management",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Management (Honours)",
+      "faculty": "Faculty of Management",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Management (Honours) (Human Resource Management)",
+      "faculty": "Faculty of Management",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Bachelor of Management (Honours) (Marketing Management)",
+      "faculty": "Faculty of Management",
+      "level": "Bachelor's Degree"
+    },
+    {
+      "name": "Doctor of Philosophy (Management)",
+      "faculty": "Faculty of Management",
+      "level": "Doctorate"
+    },
+    {
+      "name": "Master of Philosophy (Management)",
+      "faculty": "Faculty of Management",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Master of Accounting",
+      "faculty": "Faculty of Management",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Doctor of Philosophy (Management)",
+      "faculty": "Graduate School of Management",
+      "level": "Doctorate"
+    },
+    {
+      "name": "Doctor of Business Administration",
+      "faculty": "Graduate School of Management",
+      "level": "Doctorate"
+    },
+    {
+      "name": "Executive Master of Business Administration",
+      "faculty": "Graduate School of Management",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Master of Business Administration",
+      "faculty": "Graduate School of Management",
+      "level": "Master's Degree"
+    },
+    {
+      "name": "Master of Business Administration (Information Technology Management)",
+      "faculty": "Graduate School of Management",
+      "level": "Master's Degree"
+    }
+  ],
+  "students": [
+    {
+      "name": "Lam Yat Weng",
+      "id": 1102703431,
+      "programme": "Faculty of Computer Science (Honours)",
+      "status": "Active",
+      "email": "1102703431@mmu.edu.my",
+      "balanceCreditHour": 0,
+      "cgpa": 3.0,
+      "muet": 4,
+      "financialDue": 0
+    },
+    {
+      "name": "Lim Jia Yee",
+      "id": 1102700001,
+      "programme": "Bachelor of Accounting (Honours)",
+      "status": "Active",
+      "email": "1102700001@mmu.edu.my",
+      "balanceCreditHour": 0,
+      "cgpa": 2.8,
+      "muet": 3,
+      "financialDue": 1300
+    },
+    {
+      "name": "Choo Kim Keong",
+      "id": 1102700002,
+      "programme": "Bachelor of Business Administration (Honours) (Marketing Management)",
+      "status": "Active",
+      "email": "1102702766@mmu.edu.my",
+      "balanceCreditHour": 0,
+      "cgpa": 2.76,
+      "muet": 2,
+      "financialDue": 0
+    },
+    {
+      "name": "Yeong Wei Chieh",
+      "id": 1102700003,
+      "programme": "Bachelor of Business Administration (Honours) (International Business)",
+      "status": "Complete",
+      "email": "1102700003@mmu.edu.my",
+      "balanceCreditHour": 0,
+      "cgpa": 2.9,
+      "muet": 3,
+      "financialDue": 0
+    },
+    {
+      "name": "Ali Rashidifar",
+      "id": 1102700004,
+      "programme": "Master of Business Administration (Information Technology Management)",
+      "status": "Active",
+      "email": "1102700004@mmu.edu.my",
+      "balanceCreditHour": 0,
+      "cgpa": 2.91,
+      "muet": 5,
+      "financialDue": 1000
+    },
+    {
+      "name": "Chong Xie Jze",
+      "id": 1102700005,
+      "programme": "Bachelor of Economics (Honours) (Analytical Economics)",
+      "status": "Active",
+      "email": "1102700005@mmu.edu.my",
+      "balanceCreditHour": 10,
+      "cgpa": 2.76,
+      "muet": 3,
+      "financialDue": 0
+    }
+  ]
+}

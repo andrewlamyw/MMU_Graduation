@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">MMU Graduation</string>
-    <string-array name="course_level_array">
+    <string-array name="programme_level_array">
         <item>Diploma</item>
         <item>Bachelor\'s Degree</item>
         <item>Master\'s Degree</item>
@@ -18,7 +18,7 @@
         <item>Faculty of Management</item>
         <item>Graduate School of Management</item>
     </string-array>
-    <string-array name="course_array">
+    <string-array name="programme_array">
         <item>Diploma in Accounting</item>
         <item>Diploma in Business Administration</item>
         <item>Diploma in Business Information Systems</item>
@@ -30,7 +30,8 @@
         <item>Pending finance</item>
         <item>Pending MUET</item>
     </string-array>
-    <string-array name="muet_array">
+    <string-array name="muet_grading_array">
+        <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -53,7 +54,7 @@
     <string name="feedback">Send feedback</string>
     <string name="help">Help</string>
     <string name="help_feedback"><![CDATA[Help & feedback]]></string>
-    <string name="course">Course</string>
+    <string name="programme">Course</string>
     <string name="profile">Profile</string>
     <string name="student">Student</string>
     <string name="save">SAVE</string>
