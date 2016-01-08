@@ -82,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
                         case "Logout":
                             session.logoutUser();
                             break;
+                        case "Graduation":
+                            GraduationFragment graduationFragment = new GraduationFragment();
+                            getFragmentManager().beginTransaction().replace(R.id.fragment_container, graduationFragment).commit();
+                            break;
                     }
                 }
                 menuItem.setChecked(true);

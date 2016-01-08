@@ -26,6 +26,10 @@
             android:id="@+id/drawer_student"
             android:icon="@mipmap/ic_group_black_24dp"
             android:title="@string/student" />
+
+        <item
+            android:id="@+id/drawer_graduation"
+            android:title="@string/graduation" />
     </group>
 
     <group

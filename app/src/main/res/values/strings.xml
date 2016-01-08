@@ -29,6 +29,7 @@
         <item>Complete</item>
         <item>Pending finance</item>
         <item>Pending MUET</item>
+        <item>Pending approval</item>
     </string-array>
     <string-array name="muet_grading_array">
         <item>0</item>
@@ -59,4 +60,5 @@
     <string name="student">Student</string>
     <string name="save">SAVE</string>
     <string name="logout">Logout</string>
+    <string name="graduation">Graduation</string>
 </resources>
