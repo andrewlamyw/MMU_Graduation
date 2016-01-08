@@ -24,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_view);
 
+        /** Redirect non-logged in user to LoginActivity */
+        final SessionManager session = new SessionManager(getApplicationContext());
+        session.checkLogin();
+
         // Set up ActionBar
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -74,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
                         case "Student":
                             StudentFragment studentFragment = new StudentFragment();
                             getFragmentManager().beginTransaction().replace(R.id.fragment_container, studentFragment).commit();
+                            break;
+                        case "Logout":
+                            session.logoutUser();
+                            break;
                     }
                 }
                 menuItem.setChecked(true);

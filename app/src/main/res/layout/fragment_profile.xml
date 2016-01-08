@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:mContext=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,8 +22,7 @@
             <TextView
                 android:id="@+id/profile_student_name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lam Yat Weng" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -38,8 +37,7 @@
             <TextView
                 android:id="@+id/profile_student_id"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1102703431" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -49,13 +47,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Program: " />
+                android:text="Programme: " />
 
             <TextView
-                android:id="@+id/profile_student_program"
+                android:id="@+id/profile_student_programme"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bachelor of Computing and Informatics (Honours)" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -70,8 +67,7 @@
             <TextView
                 android:id="@+id/profile_student_status"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Active" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -86,8 +82,7 @@
             <TextView
                 android:id="@+id/profile_student_email"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1102703431@student.mmu.edu.my" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -102,8 +97,7 @@
             <TextView
                 android:id="@+id/profile_student_balanceCreditHour"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -118,8 +112,7 @@
             <TextView
                 android:id="@+id/profile_student_CGPA"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="3.40" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -134,8 +127,7 @@
             <TextView
                 android:id="@+id/profile_student_muet"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -150,8 +142,7 @@
             <TextView
                 android:id="@+id/profile_student_financialDue"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1555.00" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

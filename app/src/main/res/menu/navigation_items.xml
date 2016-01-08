@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity">
+    tools:mContext=".MainActivity">
 
     <group
         android:id="@+id/root_menu_drawer"
@@ -41,5 +41,9 @@
             android:id="@+id/drawer_help_feedback"
             android:icon="@mipmap/ic_help_black_24dp"
             android:title="@string/help_feedback" />
+
+        <item
+            android:id="@+id/logout"
+            android:title="@string/logout" />
     </group>
 </menu>
