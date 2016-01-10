@@ -15,41 +15,34 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+import com.lamyatweng.mmugraduation1.Constants;
 import com.lamyatweng.mmugraduation1.R;
 
 public class ProgrammeAddDialogFragment extends DialogFragment {
-
-    public ProgrammeAddDialogFragment() {
-        // Empty constructor required for DialogFragment
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Firebase.setAndroidContext(getActivity());
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_programme_add, container, false);
-        final Firebase firebaseProgrammeRef = new Firebase("https://mmugraduation.firebaseio.com/programmes");
+
         final TextInputLayout programmeNameWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_programme_name);
         final Spinner programmeLevelSpinner = (Spinner) view.findViewById(R.id.programme_level_spinner);
         final Spinner facultySpinner = (Spinner) view.findViewById(R.id.faculty_spinner);
 
+        // Populate list of programmes from array into spinner
         ArrayAdapter<CharSequence> programmeAdapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.programme_level_array, android.R.layout.simple_spinner_item);
         programmeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         programmeLevelSpinner.setAdapter(programmeAdapter);
 
+        // Populate list of faculties from array into spinner
         ArrayAdapter<CharSequence> facultyAdapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.faculty_array, android.R.layout.simple_spinner_item);
         facultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         facultySpinner.setAdapter(facultyAdapter);
 
+        // Set up Toolbar
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        toolbar.setTitle("New programme");
+        toolbar.setTitle("New " + Constants.TITLE_PROGRAMME);
         toolbar.setNavigationIcon(R.mipmap.ic_close_white_24dp);
         toolbar.inflateMenu(R.menu.programme_add);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -58,16 +51,25 @@ public class ProgrammeAddDialogFragment extends DialogFragment {
                 ProgrammeAddDialogFragment.this.getDialog().cancel();
             }
         });
+        // Save new programme information into Firebase
+        Firebase.setAndroidContext(getActivity());
+        final Firebase programmeRef = new Firebase(Constants.FIREBASE_PROGRAMMES_REF);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                String name = programmeNameWrapper.getEditText().getText().toString();
+                // Get user inputs
+                String name = "";
+                if (programmeNameWrapper.getEditText() != null)
+                    name = programmeNameWrapper.getEditText().getText().toString();
+
                 String level = programmeLevelSpinner.getSelectedItem().toString();
                 String faculty = facultySpinner.getSelectedItem().toString();
 
+                // Save into Firebase
                 Programme newProgramme = new Programme(name, level, faculty);
-                firebaseProgrammeRef.push().setValue(newProgramme);
-                Toast.makeText(getActivity(), "Programme added.", Toast.LENGTH_SHORT).show();
+                programmeRef.push().setValue(newProgramme);
+                Toast.makeText(getActivity(), Constants.TITLE_PROGRAMME + " added.", Toast.LENGTH_SHORT).show();
+
                 // Close dialog
                 ProgrammeAddDialogFragment.this.getDialog().cancel();
                 return false;
@@ -77,9 +79,11 @@ public class ProgrammeAddDialogFragment extends DialogFragment {
         return view;
     }
 
+    /**
+     * Set dialog theme
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Dialog dialog = new Dialog(getActivity(), android.R.style.Theme_DeviceDefault_Light_DialogWhenLarge_NoActionBar);
-        return dialog;
+        return new Dialog(getActivity(), android.R.style.Theme_DeviceDefault_Light_DialogWhenLarge_NoActionBar);
     }
 }

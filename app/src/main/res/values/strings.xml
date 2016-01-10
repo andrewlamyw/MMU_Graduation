@@ -1,5 +1,30 @@
 <resources>
     <string name="app_name">MMU Graduation</string>
+
+    <!-- Title-->
+    <string name="title_home">Home</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_student">Student</string>
+    <string name="title_graduation">Graduation</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_help_feedback"><![CDATA[Help & feedback]]></string>
+    <string name="title_logout">Logout</string>
+    <string name="title_save">SAVE</string>
+    <string name="title_search">Search</string>
+    <string name="title_share">Share</string>
+    <string name="title_programme">Programme</string>
+
+    <!-- Others -->
+    <string name="drawer_open">Open drawer</string>
+    <string name="drawer_close">Close drawer</string>
+
+    <!-- Array -->
+    <string-array name="programme_array">
+        <item>Diploma in Accounting</item>
+        <item>Diploma in Business Administration</item>
+        <item>Diploma in Business Information Systems</item>
+        <item>Diploma in Electronic Engineering</item>
+    </string-array>
     <string-array name="programme_level_array">
         <item>Diploma</item>
         <item>Bachelor\'s Degree</item>
@@ -18,12 +43,6 @@
         <item>Faculty of Management</item>
         <item>Graduate School of Management</item>
     </string-array>
-    <string-array name="programme_array">
-        <item>Diploma in Accounting</item>
-        <item>Diploma in Business Administration</item>
-        <item>Diploma in Business Information Systems</item>
-        <item>Diploma in Electronic Engineering</item>
-    </string-array>
     <string-array name="status_array">
         <item>Active</item>
         <item>Complete</item>
@@ -40,25 +59,4 @@
         <item>5</item>
         <item>6</item>
     </string-array>
-    <string name="drawer_open">Drawer open</string>
-    <string name="drawer_close">Drawer close</string>
-    <string name="search">Search</string>
-    <string name="settings">Settings</string>
-    <string name="add">add</string>
-    <string name="share">Share</string>
-    <string name="action_categorise">View courses in group</string>
-    <string name="course_name">Course Name</string>
-    <string name="home">Home</string>
-    <string name="favourite">Favourite</string>
-    <string name="section_title">Section One</string>
-    <string name="downloaded">Downloaded</string>
-    <string name="feedback">Send feedback</string>
-    <string name="help">Help</string>
-    <string name="help_feedback"><![CDATA[Help & feedback]]></string>
-    <string name="programme">Course</string>
-    <string name="profile">Profile</string>
-    <string name="student">Student</string>
-    <string name="save">SAVE</string>
-    <string name="logout">Logout</string>
-    <string name="graduation">Graduation</string>
 </resources>

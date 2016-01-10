@@ -19,54 +19,45 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
-
-    private static final String EMAIL_PATTERN = "^[a-zA-Z0-9#_~!$&'()*+,;=:.\"(),:;<>@\\[\\]\\\\]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$";
-    private Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-    private Matcher matcher;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Firebase.setAndroidContext(this);
-        final Firebase ref = new Firebase("https://mmugraduation.firebaseio.com/");
         setContentView(R.layout.activity_login);
+
         final Activity activity = this;
         final SessionManager session = new SessionManager(getApplicationContext());
-
         final TextInputLayout usernameWrapper = (TextInputLayout) findViewById(R.id.wrapper_email);
         final TextInputLayout passwordWrapper = (TextInputLayout) findViewById(R.id.wrapper_password);
 
+        Firebase.setAndroidContext(this);
+        final Firebase rootRef = new Firebase(Constants.FIREBASE_ROOT_REF);
         Button buttonLogin = (Button) findViewById(R.id.button_login);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String username = usernameWrapper.getEditText().getText().toString();
-                String password = passwordWrapper.getEditText().getText().toString();
+                final String email = usernameWrapper.getEditText().getText().toString();
 
-                // Hide keyboard
-                /*View view = activity.getCurrentFocus();
-                if (view != null) {
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-                }*/
+                String password = "";
+                if (passwordWrapper.getEditText() != null)
+                    password = passwordWrapper.getEditText().getText().toString();
 
                 hideKeyboard();
 
-                if (!validateEmail(username)) {
+                if (!validateEmail(email)) {
                     usernameWrapper.setError("Not a valid email address!");
                 } else if (!validatePassword(password)) {
                     passwordWrapper.setError("Not a valid password!");
                 } else {
                     usernameWrapper.setErrorEnabled(false);
                     passwordWrapper.setErrorEnabled(false);
-                    ref.authWithPassword(username, password, new Firebase.AuthResultHandler() {
+                    rootRef.authWithPassword(email, password, new Firebase.AuthResultHandler() {
                         @Override
                         public void onAuthenticated(AuthData authData) {
-                            session.createLoginSession(username);
+                            session.createLoginSession(email);
+
                             Intent intent = new Intent(activity, MainActivity.class);
                             startActivity(intent);
                         }
-
                         @Override
                         public void onAuthenticationError(FirebaseError firebaseError) {
                             Toast.makeText(activity, "Wrong email or password.", Toast.LENGTH_SHORT).show();
@@ -86,7 +77,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public boolean validateEmail(String email) {
-        matcher = pattern.matcher(email);
+        String emailPattern = "^[a-zA-Z0-9#_~!$&'()*+,;=:.\"(),:;<>@\\[\\]\\\\]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$";
+        Pattern pattern = Pattern.compile(emailPattern);
+        Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
 

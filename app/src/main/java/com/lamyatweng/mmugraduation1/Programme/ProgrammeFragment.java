@@ -19,30 +19,14 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.lamyatweng.mmugraduation1.Constants;
 import com.lamyatweng.mmugraduation1.R;
 
 public class ProgrammeFragment extends Fragment {
-
-    Firebase mProgrammeRef;
-
-    public ProgrammeFragment() {
-        // Empty constructor required for fragment subclasses
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Firebase.setAndroidContext(getActivity());
-        mProgrammeRef = new Firebase("https://mmugraduation.firebaseio.com/programmes");
         this.setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        android.support.v7.app.ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        if (actionBar != null)
-            actionBar.setTitle("Program");
     }
 
     @Override
@@ -55,15 +39,10 @@ public class ProgrammeFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_categorise:
-                return true;
-
             case R.id.action_share:
                 return true;
-
             case R.id.action_settings:
                 return true;
-
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
@@ -75,11 +54,12 @@ public class ProgrammeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_programme, container, false);
-        ListView programmeListView = (ListView) rootView.findViewById(R.id.programme_list_view);
-        FloatingActionButton addProgrammeFab = (FloatingActionButton) rootView.findViewById(R.id.add_programme_fab);
 
+        // Populate list of programmes from Firebase into ListView
+        Firebase.setAndroidContext(getActivity());
+        Firebase programmeRef = new Firebase(Constants.FIREBASE_PROGRAMMES_REF);
         final ProgrammeCustomAdapter adapter = new ProgrammeCustomAdapter(getActivity());
-        mProgrammeRef.addValueEventListener(new ValueEventListener() {
+        programmeRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Programme programme;
@@ -89,14 +69,16 @@ public class ProgrammeFragment extends Fragment {
                     adapter.add(programme);
                 }
             }
-
             @Override
             public void onCancelled(FirebaseError firebaseError) {
                 Snackbar.make(rootView, firebaseError.getMessage(), Snackbar.LENGTH_LONG).show();
             }
         });
+        ListView programmeListView = (ListView) rootView.findViewById(R.id.programme_list_view);
         programmeListView.setAdapter(adapter);
 
+        // Launch a dialog to add new programme
+        FloatingActionButton addProgrammeFab = (FloatingActionButton) rootView.findViewById(R.id.add_programme_fab);
         addProgrammeFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,5 +91,16 @@ public class ProgrammeFragment extends Fragment {
         });
 
         return rootView;
+    }
+
+    /**
+     * Set ActionBar title
+     */
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        android.support.v7.app.ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null)
+            actionBar.setTitle(Constants.TITLE_PROGRAMME);
     }
 }

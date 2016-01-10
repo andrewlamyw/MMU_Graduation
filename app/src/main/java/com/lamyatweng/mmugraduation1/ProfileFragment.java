@@ -2,6 +2,7 @@ package com.lamyatweng.mmugraduation1;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +16,14 @@ import com.firebase.client.Query;
 import com.lamyatweng.mmugraduation1.Student.Student;
 
 public class ProfileFragment extends Fragment {
-
-    public ProfileFragment() {
-        // Empty constructor required for fragment subclasses
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
-        Firebase.setAndroidContext(getActivity());
-        Firebase studentRef = new Firebase("https://mmugraduation.firebaseio.com/students");
+
+        // Get email of currently logged in user
+        SessionManager session = new SessionManager(getActivity().getApplicationContext());
+        session.checkLogin();
+        String userEmail = session.getUserEmail();
 
         final TextView name = (TextView) rootView.findViewById(R.id.profile_student_name);
         final TextView id = (TextView) rootView.findViewById(R.id.profile_student_id);
@@ -36,10 +35,9 @@ public class ProfileFragment extends Fragment {
         final TextView muet = (TextView) rootView.findViewById(R.id.profile_student_muet);
         final TextView financial = (TextView) rootView.findViewById(R.id.profile_student_financialDue);
 
-        SessionManager session = new SessionManager(getActivity().getApplicationContext());
-        session.checkLogin();
-        String userEmail = session.getUserEmail();
-
+        // Retrieve student information from Firebase
+        Firebase.setAndroidContext(getActivity());
+        Firebase studentRef = new Firebase(Constants.FIREBASE_STUDENTS_REF);
         Query queryRef = studentRef.orderByChild("email").equalTo(userEmail);
         queryRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -58,25 +56,29 @@ public class ProfileFragment extends Fragment {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
             }
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
-
             }
         });
 
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        android.support.v7.app.ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null)
+            actionBar.setTitle(Constants.TITLE_PROFILE);
     }
 }

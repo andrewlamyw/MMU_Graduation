@@ -15,65 +15,44 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+import com.lamyatweng.mmugraduation1.Constants;
 import com.lamyatweng.mmugraduation1.R;
 
 public class StudentAddDialogFragment extends DialogFragment {
-    Firebase mFirebaseStudentRef;
-    TextInputLayout mStudentNameWrapper;
-    TextInputLayout mStudentIdWrapper;
-    Spinner mProgrammeSpinner;
-    Spinner mStatusSpinner;
-    TextInputLayout mEmailWrapper;
-    TextInputLayout mBalanceCreditHour;
-    TextInputLayout mCgpa;
-    Spinner mMuet;
-    TextInputLayout mFinancialDue;
-
-    public StudentAddDialogFragment() {
-        // Empty constructor required for DialogFragment
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Firebase.setAndroidContext(getActivity());
-        mFirebaseStudentRef = new Firebase("https://mmugraduation.firebaseio.com/students");
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_student_add, container, false);
-        // name
-        mStudentNameWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_student_name);
-        // email
-        mStudentIdWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_email);
-        // course
-        mProgrammeSpinner = (Spinner) view.findViewById(R.id.programme_spinner);
+
+        final TextInputLayout nameWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_student_name);
+        final TextInputLayout idWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_email);
+        final TextInputLayout emailWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_student_email);
+        final TextInputLayout creditHourWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_student_balanceCreditHour);
+        final TextInputLayout cgpaWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_student_cgpa);
+        final TextInputLayout financialWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_student_financialDue);
+
+        // Populate list of programmes from array into spinner
+        final Spinner programmeSpinner = (Spinner) view.findViewById(R.id.programme_spinner);
         ArrayAdapter<CharSequence> programmeAdapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.programme_array, android.R.layout.simple_spinner_item);
         programmeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mProgrammeSpinner.setAdapter(programmeAdapter);
-        // status
-        mStatusSpinner = (Spinner) view.findViewById(R.id.status_spinner);
+        programmeSpinner.setAdapter(programmeAdapter);
+
+        // Populate list of status from array into spinner
+        final Spinner statusSpinner = (Spinner) view.findViewById(R.id.status_spinner);
         ArrayAdapter<CharSequence> statusAdapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.status_array, android.R.layout.simple_spinner_item);
         statusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mStatusSpinner.setAdapter(statusAdapter);
-        // email
-        mEmailWrapper = (TextInputLayout) view.findViewById(R.id.wrapper_student_email);
-        // credit hour
-        mBalanceCreditHour = (TextInputLayout) view.findViewById(R.id.wrapper_student_balanceCreditHour);
-        mCgpa = (TextInputLayout) view.findViewById(R.id.wrapper_student_cgpa);
-        // muet
-        mMuet = (Spinner) view.findViewById(R.id.muet_spinner);
+        statusSpinner.setAdapter(statusAdapter);
+
+        // Populate list of muet grades from array into spinner
+        final Spinner muetSpinner = (Spinner) view.findViewById(R.id.muet_spinner);
         ArrayAdapter<CharSequence> muetAdapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.muet_grading_array, android.R.layout.simple_spinner_item);
         muetAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mMuet.setAdapter(muetAdapter);
-        // financial
-        mFinancialDue = (TextInputLayout) view.findViewById(R.id.wrapper_student_financialDue);
+        muetSpinner.setAdapter(muetAdapter);
 
+        // Set up Toolbar
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         toolbar.setTitle("New student");
         toolbar.setNavigationIcon(R.mipmap.ic_close_white_24dp);
@@ -84,22 +63,45 @@ public class StudentAddDialogFragment extends DialogFragment {
                 StudentAddDialogFragment.this.getDialog().cancel();
             }
         });
+        Firebase.setAndroidContext(getActivity());
+        final Firebase studentRef = new Firebase(Constants.FIREBASE_STUDENTS_REF);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                String name = mStudentNameWrapper.getEditText().getText().toString();
-                String id = mStudentIdWrapper.getEditText().getText().toString();
-                String programme = mProgrammeSpinner.getSelectedItem().toString();
-                String status = mStatusSpinner.getSelectedItem().toString();
-                String email = mEmailWrapper.getEditText().getText().toString();
-                int balanceCreditHour = Integer.parseInt(mBalanceCreditHour.getEditText().getText().toString());
-                double cgpa = Double.parseDouble(mCgpa.getEditText().getText().toString());
-                int muet = Integer.parseInt(mMuet.getSelectedItem().toString());
-                double financialDue = Double.parseDouble(mFinancialDue.getEditText().getText().toString());
+                // Get user inputs
+                String programme = programmeSpinner.getSelectedItem().toString();
+                String status = statusSpinner.getSelectedItem().toString();
+                int muet = Integer.parseInt(muetSpinner.getSelectedItem().toString());
 
+                String name = "";
+                if (nameWrapper.getEditText() != null)
+                    name = nameWrapper.getEditText().getText().toString();
+
+                String id = "";
+                if (idWrapper.getEditText() != null)
+                    id = idWrapper.getEditText().getText().toString();
+
+                String email = "";
+                if (emailWrapper.getEditText() != null)
+                    email = emailWrapper.getEditText().getText().toString();
+
+                int balanceCreditHour = 0;
+                if (creditHourWrapper.getEditText() != null)
+                    balanceCreditHour = Integer.parseInt(creditHourWrapper.getEditText().getText().toString());
+
+                double cgpa = 0;
+                if (cgpaWrapper.getEditText() != null)
+                    cgpa = Double.parseDouble(cgpaWrapper.getEditText().getText().toString());
+
+                double financialDue = 0;
+                if (financialWrapper.getEditText() != null)
+                    financialDue = Double.parseDouble(financialWrapper.getEditText().getText().toString());
+
+                // Save into Firebase
                 Student newStudent = new Student(name, id, programme, status, email, balanceCreditHour, cgpa, muet, financialDue);
-                mFirebaseStudentRef.push().setValue(newStudent);
-                Toast.makeText(getActivity(), "Student added.", Toast.LENGTH_SHORT).show();
+                studentRef.push().setValue(newStudent);
+                Toast.makeText(getActivity(), Constants.TITLE_STUDENT + " added.", Toast.LENGTH_SHORT).show();
+
                 // Close dialog
                 StudentAddDialogFragment.this.getDialog().cancel();
                 return false;
@@ -109,9 +111,11 @@ public class StudentAddDialogFragment extends DialogFragment {
         return view;
     }
 
+    /**
+     * Set dialog theme
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Dialog dialog = new Dialog(getActivity(), android.R.style.Theme_DeviceDefault_Light_DialogWhenLarge_NoActionBar);
-        return dialog;
+        return new Dialog(getActivity(), android.R.style.Theme_DeviceDefault_Light_DialogWhenLarge_NoActionBar);
     }
 }

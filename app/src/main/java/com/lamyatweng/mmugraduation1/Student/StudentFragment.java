@@ -17,39 +17,20 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.lamyatweng.mmugraduation1.Constants;
 import com.lamyatweng.mmugraduation1.R;
 
 public class StudentFragment extends Fragment {
-
-    Firebase mStudentRef;
-
-    public StudentFragment() {
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Firebase.setAndroidContext(getActivity());
-        mStudentRef = new Firebase("https://mmugraduation.firebaseio.com/students");
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        android.support.v7.app.ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        if (actionBar != null)
-            actionBar.setTitle("Student");
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_student, container, false);
-        ListView studentListView = (ListView) rootView.findViewById(R.id.student_list_view);
-        FloatingActionButton addStudentFab = (FloatingActionButton) rootView.findViewById(R.id.add_student_fab);
 
+        // Populate list of students from Firebase into ListView
         final StudentCustomAdapter adapter = new StudentCustomAdapter(getActivity());
-        mStudentRef.addValueEventListener(new ValueEventListener() {
+        Firebase.setAndroidContext(getActivity());
+        Firebase studentRef = new Firebase(Constants.FIREBASE_STUDENTS_REF);
+        studentRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Student student;
@@ -59,14 +40,16 @@ public class StudentFragment extends Fragment {
                     adapter.add(student);
                 }
             }
-
             @Override
             public void onCancelled(FirebaseError firebaseError) {
                 Snackbar.make(rootView, firebaseError.getMessage(), Snackbar.LENGTH_LONG).show();
             }
         });
+        ListView studentListView = (ListView) rootView.findViewById(R.id.student_list_view);
         studentListView.setAdapter(adapter);
 
+        // Launch a dialog to add new student
+        FloatingActionButton addStudentFab = (FloatingActionButton) rootView.findViewById(R.id.add_student_fab);
         addStudentFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,5 +62,13 @@ public class StudentFragment extends Fragment {
         });
 
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        android.support.v7.app.ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null)
+            actionBar.setTitle(Constants.TITLE_STUDENT);
     }
 }

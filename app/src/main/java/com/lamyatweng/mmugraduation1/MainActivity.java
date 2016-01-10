@@ -3,7 +3,6 @@ package com.lamyatweng.mmugraduation1;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,22 +10,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.lamyatweng.mmugraduation1.Programme.ProgrammeFragment;
 import com.lamyatweng.mmugraduation1.Student.StudentFragment;
 
 public class MainActivity extends AppCompatActivity {
+
+    SessionManager mSession;
     DrawerLayout mDrawerLayout;
     ActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_view);
 
-        /** Redirect non-logged in user to LoginActivity */
-        final SessionManager session = new SessionManager(getApplicationContext());
-        session.checkLogin();
+        // Redirects user to LoginActivity if not logged in
+        mSession = new SessionManager(getApplicationContext());
+        mSession.checkLogin();
 
         // Set up ActionBar
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -35,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
         // Set up Open and Close drawer with the App Icon
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(
-                this,                  /* host Activity */
-                mDrawerLayout,         /* DrawerLayout object */
-                toolbar,               /* Toolbar to inject into */
+                this,                         /* host Activity */
+                mDrawerLayout,                /* DrawerLayout object */
+                toolbar,                      /* Toolbar to inject into */
                 R.string.drawer_open,         /* "open drawer" description */
                 R.string.drawer_close         /* "close drawer" description */
         ) {
@@ -51,42 +54,19 @@ public class MainActivity extends AppCompatActivity {
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        final NavigationView view = (NavigationView) findViewById(R.id.navigation_view);
-        view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        // Set up NavigationView
+        final NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 if (findViewById(R.id.fragment_container) != null) {
-
                     if (savedInstanceState != null) {
                         // If we're being restored from a previous state,
                         // then we don't need to do anything and should return or else
                         // we could end up with overlapping fragments.
                         return false;
                     }
-
-                    switch (menuItem.getTitle().toString()) {
-                        case "Program":
-                            ProgrammeFragment programmeFragment = new ProgrammeFragment();
-                            getFragmentManager().beginTransaction().replace(R.id.fragment_container, programmeFragment).commit();
-                            Snackbar.make(view, "Loading", Snackbar.LENGTH_LONG).show();
-                            break;
-                        case "Profile":
-                            ProfileFragment profileFragment = new ProfileFragment();
-                            getFragmentManager().beginTransaction().replace(R.id.fragment_container, profileFragment).commit();
-                            getSupportActionBar().setTitle("Profile");
-                            break;
-                        case "Student":
-                            StudentFragment studentFragment = new StudentFragment();
-                            getFragmentManager().beginTransaction().replace(R.id.fragment_container, studentFragment).commit();
-                            break;
-                        case "Logout":
-                            session.logoutUser();
-                            break;
-                        case "Graduation":
-                            GraduationFragment graduationFragment = new GraduationFragment();
-                            getFragmentManager().beginTransaction().replace(R.id.fragment_container, graduationFragment).commit();
-                            break;
-                    }
+                    displayFragment(menuItem);
                 }
                 menuItem.setChecked(true);
                 mDrawerLayout.closeDrawers();
@@ -95,7 +75,39 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // for Open and Close with the ActionBar Icon purpose
+    /**
+     * Display fragment based on selected drawerMenuItem
+     */
+    public void displayFragment(MenuItem menuItem) {
+
+        switch (menuItem.getTitle().toString()) {
+
+            case Constants.TITLE_PROGRAMME:
+                ProgrammeFragment programmeFragment = new ProgrammeFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, programmeFragment).commit();
+                Toast.makeText(getApplicationContext(), "Loading", Toast.LENGTH_LONG).show();
+                break;
+            case Constants.TITLE_PROFILE:
+                ProfileFragment profileFragment = new ProfileFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, profileFragment).commit();
+                break;
+            case Constants.TITLE_STUDENT:
+                StudentFragment studentFragment = new StudentFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, studentFragment).commit();
+                break;
+            case Constants.TITLE_GRADUATION:
+                GraduationFragment graduationFragment = new GraduationFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, graduationFragment).commit();
+                break;
+            case Constants.TITLE_LOGOUT:
+                mSession.logoutUser();
+                break;
+        }
+    }
+
+    /**
+     * Open and Close with ActionBar Icon
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -107,7 +119,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // for Open and Close with the ActionBar Icon purpose
+    /**
+     * Open and Close with ActionBar Icon
+     */
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -115,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerToggle.syncState();
     }
 
-    // for Open and Close with the ActionBar Icon purpose
+    /** Open and Close with ActionBar Icon */
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);

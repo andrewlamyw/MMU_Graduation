@@ -21,17 +21,22 @@ public class GraduationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_graduation, container, false);
+
+        // Check is currently logged in student fulfill graduation requirements
+        // If fulfilled, change student status to "Pending approval"
+        // else, tell user requirements not fulfilled
         Button applyButton = (Button) rootView.findViewById(R.id.button_apply_for_graduation);
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Firebase.setAndroidContext(getActivity());
-                final Firebase studentRef = new Firebase("https://mmugraduation.firebaseio.com/students");
-
+                // Get email of currently logged in user
                 SessionManager session = new SessionManager(getActivity().getApplicationContext());
                 session.checkLogin();
                 String userEmail = session.getUserEmail();
 
+                // Retrieve student information from Firebase
+                Firebase.setAndroidContext(getActivity());
+                final Firebase studentRef = new Firebase(Constants.FIREBASE_STUDENTS_REF);
                 final Query queryRef = studentRef.orderByChild("email").equalTo(userEmail);
                 queryRef.addChildEventListener(new ChildEventListener() {
                     @Override
@@ -51,22 +56,18 @@ public class GraduationFragment extends Fragment {
 
                     @Override
                     public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
                     }
 
                     @Override
                     public void onChildRemoved(DataSnapshot dataSnapshot) {
-
                     }
 
                     @Override
                     public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
                     }
 
                     @Override
                     public void onCancelled(FirebaseError firebaseError) {
-
                     }
                 });
             }

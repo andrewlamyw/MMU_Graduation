@@ -31,7 +31,7 @@ public class SessionManager {
     }
 
     /**
-     * Get stored session data
+     * Get stored mSession data
      */
     public HashMap<String, String> getUserDetails() {
         HashMap<String, String> user = new HashMap<>();
@@ -65,7 +65,7 @@ public class SessionManager {
     }
 
     /**
-     * Clear session detail
+     * Clear mSession detail
      */
     public void logoutUser() {
         // Clearing all data from SharedPreferences
