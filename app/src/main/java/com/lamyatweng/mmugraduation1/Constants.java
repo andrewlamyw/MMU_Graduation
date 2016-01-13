@@ -8,6 +8,7 @@ public class Constants {
     public static final String TITLE_PROGRAMME = "Programme";
     public static final String TITLE_PROFILE = "Profile";
     public static final String TITLE_STUDENT = "Student";
-    public static final String TITLE_LOGOUT = "Logout";
     public static final String TITLE_GRADUATION = "Graduation";
+    public static final String TITLE_CONVOCATION = "Convocation";
+    public static final String TITLE_LOGOUT = "Logout";
 }

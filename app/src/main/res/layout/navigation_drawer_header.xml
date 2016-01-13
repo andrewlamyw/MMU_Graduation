@@ -16,30 +16,28 @@
         android:src="@drawable/profile" />
 
     <TextView
-        android:id="@+id/username"
+        android:id="@+id/header_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/email"
+        android:layout_above="@+id/header_email"
         android:layout_alignLeft="@+id/profile_image"
         android:layout_alignStart="@+id/profile_image"
         android:gravity="start"
         android:paddingBottom="4dp"
-        android:text="Lam Yat Weng"
         android:textColor="#FFF"
         android:textSize="14sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/email"
+        android:id="@+id/header_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/username"
+        android:layout_alignLeft="@+id/header_username"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/username"
+        android:layout_alignStart="@+id/header_username"
         android:layout_marginBottom="8dp"
         android:gravity="start"
-        android:text="andrewlam.yw@gmail.com"
-        android:textColor="#fff"
+        android:textColor="#FFF"
         android:textSize="14sp" />
 
 </RelativeLayout>

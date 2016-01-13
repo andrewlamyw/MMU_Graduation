@@ -30,6 +30,10 @@
         <item
             android:id="@+id/drawer_graduation"
             android:title="@string/title_graduation" />
+
+        <item
+            android:id="@+id/drawer_convocation"
+            android:title="@string/title_convocation" />
     </group>
 
     <group

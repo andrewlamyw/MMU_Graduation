@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lamyatweng.mmugraduation1.Programme.ProgrammeFragment;
@@ -27,15 +28,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_view);
 
-        // Redirects user to LoginActivity if not logged in
+        // Redirects to LoginActivity if user is not logged in
         mSession = new SessionManager(getApplicationContext());
         mSession.checkLogin();
 
-        // Set up ActionBar
+        // Set ActionBar
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Set up Open and Close drawer with the App Icon
+        // Set toggling drawer with the App Icon
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                         /* host Activity */
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        // Set up NavigationView
+        // Set navigation item selected listener
         final NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -73,10 +74,16 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        // Set navigation header email TextView
+        View view = navigationView.getHeaderView(0);
+        TextView emailHeader = (TextView) view.findViewById(R.id.header_email);
+        emailHeader.setText(mSession.getUserEmail());
     }
 
     /**
      * Display fragment based on selected drawerMenuItem
+     * Add new item at layout/menu/navigation_items.xml
      */
     public void displayFragment(MenuItem menuItem) {
 
@@ -98,6 +105,10 @@ public class MainActivity extends AppCompatActivity {
             case Constants.TITLE_GRADUATION:
                 GraduationFragment graduationFragment = new GraduationFragment();
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, graduationFragment).commit();
+                break;
+            case Constants.TITLE_CONVOCATION:
+                ConvocationFragment convocationFragment = new ConvocationFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, convocationFragment).commit();
                 break;
             case Constants.TITLE_LOGOUT:
                 mSession.logoutUser();

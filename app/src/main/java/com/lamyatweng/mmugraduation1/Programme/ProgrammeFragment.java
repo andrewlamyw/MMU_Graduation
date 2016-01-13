@@ -1,10 +1,7 @@
 package com.lamyatweng.mmugraduation1.Programme;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -69,6 +66,7 @@ public class ProgrammeFragment extends Fragment {
                     adapter.add(programme);
                 }
             }
+
             @Override
             public void onCancelled(FirebaseError firebaseError) {
                 Snackbar.make(rootView, firebaseError.getMessage(), Snackbar.LENGTH_LONG).show();
@@ -76,19 +74,6 @@ public class ProgrammeFragment extends Fragment {
         });
         ListView programmeListView = (ListView) rootView.findViewById(R.id.programme_list_view);
         programmeListView.setAdapter(adapter);
-
-        // Launch a dialog to add new programme
-        FloatingActionButton addProgrammeFab = (FloatingActionButton) rootView.findViewById(R.id.add_programme_fab);
-        addProgrammeFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                ProgrammeAddDialogFragment newFragment = new ProgrammeAddDialogFragment();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                transaction.add(newFragment, null).addToBackStack(null).commit();
-            }
-        });
 
         return rootView;
     }
