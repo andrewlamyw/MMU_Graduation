@@ -44,7 +44,7 @@ public class ProfileFragment extends Fragment {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Student student = dataSnapshot.getValue(Student.class);
                 name.setText(student.getName());
-                id.setText(student.getId());
+                id.setText(Integer.toString(student.getId()));
                 programme.setText(student.getProgramme());
                 status.setText(student.getStatus());
                 email.setText(student.getEmail());

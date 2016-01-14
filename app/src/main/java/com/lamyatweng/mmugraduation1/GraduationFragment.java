@@ -46,7 +46,7 @@ public class GraduationFragment extends Fragment {
                                 student.getCgpa() >= 2 &&
                                 student.getMuet() >= 3 &&
                                 student.getFinancialDue() <= 0) {
-                            student.setStatus("Pending approval");
+//                            student.setStatus("Pending approval");
                             studentRef.child(dataSnapshot.getKey()).setValue(student);
                             Toast.makeText(getActivity(), "Apply successfully", Toast.LENGTH_SHORT).show();
                         } else {
